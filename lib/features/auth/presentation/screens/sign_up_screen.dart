@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/extensions/localization_extension.dart';
 import '../../../shared/presentations/widgets/language_switcher.dart';
+import '../../../shared/presentations/widgets/theme_switcher.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -21,8 +22,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: Column(
         children: [
           LanguageSwitcher(),
-        ],
-      ),
+            ThemeSwitcher()
+          ]
+      )
     );
   }
 }

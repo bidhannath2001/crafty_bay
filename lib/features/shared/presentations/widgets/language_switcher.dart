@@ -11,10 +11,10 @@ class LanguageSwitcher extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LocalizationProvider>(
         builder: (context,localizationProvider,_) {
-          return DropdownMenu<Locale>(
+          return DropdownMenu(
             initialSelection: localizationProvider.locale,
             dropdownMenuEntries: localizationProvider.supportedLocales.map((l){
-              return DropdownMenuEntry(value: l, label: l.languageCode.toUpperCase());
+              return DropdownMenuEntry<Locale>(value: l, label: l.languageCode.toUpperCase());
             }).toList(),
             onSelected: (Locale? selectedLocale){
               localizationProvider.changeLocale(selectedLocale!);

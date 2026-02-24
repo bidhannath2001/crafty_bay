@@ -1,4 +1,5 @@
 import 'package:crafty_bay/app/providers/localization_provider.dart';
+import 'package:crafty_bay/app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
@@ -15,27 +16,32 @@ class CraftyBayApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_)=>LocalizationProvider()..loadData())
+        ChangeNotifierProvider(create: (_)=>LocalizationProvider()..loadData()),
+        ChangeNotifierProvider(create: (_)=>ThemeProvider()..loadData())
       ],
       child: Consumer<LocalizationProvider>(
         builder: (context,localizationProvider,child) {
-          return MaterialApp(
-            title: 'Crafty Bay',
-            initialRoute: SplashScreen.name,
-            onGenerateRoute: Routes.OngenerateRoute,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: ThemeMode.light,
+          return Consumer<ThemeProvider>(
+            builder: (context,themeProvider,child) {
+              return MaterialApp(
+                title: 'Crafty Bay',
+                initialRoute: SplashScreen.name,
+                onGenerateRoute: Routes.OngenerateRoute,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: themeProvider.theme,
 
-            localizationsDelegates: [
-              AppLocalizations.delegate, // Add this line
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: localizationProvider.supportedLocales,
-            locale: localizationProvider.locale,
-            // home: SplashScreen(),
+                localizationsDelegates: [
+                  AppLocalizations.delegate, // Add this line
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: localizationProvider.supportedLocales,
+                locale: localizationProvider.locale,
+                // home: SplashScreen(),
+              );
+            }
           );
         }
       ),
