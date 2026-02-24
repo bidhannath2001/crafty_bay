@@ -15,7 +15,7 @@ class CraftyBayApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_)=>LocalizationProvider())
+        ChangeNotifierProvider(create: (_)=>LocalizationProvider()..loadData())
       ],
       child: Consumer<LocalizationProvider>(
         builder: (context,localizationProvider,child) {
