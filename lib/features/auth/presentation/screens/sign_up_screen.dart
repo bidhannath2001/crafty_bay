@@ -1,4 +1,7 @@
+import 'package:crafty_bay/app/providers/auth_provider.dart';
+import 'package:crafty_bay/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../app/extensions/utils_extension.dart';
 import '../widgets/app_logo.dart';
@@ -25,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = context.watch<AuthProvider>();
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -88,16 +92,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 8,),
                   TextFormField(
                     controller: _passwordController,
-                    obscureText: passwordVisibility,
+                    obscureText: authProvider.isPasswordHidden,
                     obscuringCharacter: '*',
                     textInputAction: TextInputAction.done,
+                    onChanged: authProvider.updatePassword,
                     decoration: InputDecoration(
                       hintText: 'Password',
-                      suffixIcon: IconButton(onPressed: (){
-                        setState(() {
-                          passwordVisibility= !passwordVisibility;
-                        });
-                      }, icon: Icon(passwordVisibility? Icons.visibility :Icons.visibility_off))
+                      suffixIcon: authProvider.password.isNotEmpty? IconButton(onPressed: authProvider.togglePasswordVisibility,
+                          icon: Icon(authProvider.isPasswordHidden? Icons.visibility :Icons.visibility_off)) : null,
                     ),
                   ),
                   SizedBox(height: 16,),
@@ -125,7 +127,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
   void _onTapSignUpButton(){}
-  void _onTapSignInpButton(){}
+  void _onTapSignInpButton(){
+    context.read<AuthProvider>()..resetFields();
+    Navigator.pushNamed(context, SignInScreen.name);
+  }
 
   void dispose(){
     _emailController.dispose();

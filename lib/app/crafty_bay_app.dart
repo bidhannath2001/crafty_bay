@@ -1,3 +1,4 @@
+import 'package:crafty_bay/app/providers/auth_provider.dart';
 import 'package:crafty_bay/app/providers/localization_provider.dart';
 import 'package:crafty_bay/app/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,8 @@ class CraftyBayApp extends StatelessWidget {
     return  MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_)=>LocalizationProvider()..loadData()),
-        ChangeNotifierProvider(create: (_)=>ThemeProvider()..loadData())
+        ChangeNotifierProvider(create: (_)=>ThemeProvider()..loadData()),
+        ChangeNotifierProvider(create: (_)=>AuthProvider())
       ],
       child: Consumer<LocalizationProvider>(
         builder: (context,localizationProvider,child) {
