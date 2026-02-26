@@ -1,5 +1,6 @@
 import 'package:crafty_bay/app/providers/auth_provider.dart';
 import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
+import 'package:crafty_bay/features/auth/presentation/screens/verify_otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -69,7 +70,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Already have an account?'),
+                      const Text("Don't have an account?"),
                       TextButton(
                         onPressed: _onTapSignUpButton,
                         child: const Text('Sign Up'),
@@ -85,7 +86,9 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  void _onTapSignInButton(){}
+  void _onTapSignInButton(){
+    Navigator.pushNamed(context, VerifyOtpScreen.name);
+  }
   void _onTapSignUpButton(){
     context.read<AuthProvider>()..resetFields();
     Navigator.pushNamed(context, SignUpScreen.name);
