@@ -1,11 +1,11 @@
-import 'dart:async';
-
 import 'package:crafty_bay/app/app_colors.dart';
+import 'package:crafty_bay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../app/extensions/utils_extension.dart';
 import '../widgets/app_logo.dart';
+import '../widgets/resend_otp.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
   const VerifyOtpScreen({super.key});
@@ -63,7 +63,6 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                   ),
                   const SizedBox(height: 16),
                   ResendOtp(),
-
                 ],
               ),
             ),
@@ -73,7 +72,9 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
     );
   }
 
-  void _onTapSignInButton() {}
+  void _onTapSignInButton() {
+    Navigator.pushNamed(context, SignUpScreen.name);
+  }
 
   void dispose() {
     _otpController.dispose();
@@ -81,76 +82,3 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   }
 }
 
-class ResendOtp extends StatefulWidget {
-  const ResendOtp({super.key});
-
-  @override
-  State<ResendOtp> createState() => _ResendOtpState();
-}
-
-class _ResendOtpState extends State<ResendOtp> {
-  Timer? _timer;
-  int _start = 30;
-  bool _shorResendOtpButton = false;
-
-  @override
-  void initState() {
-    _startTimer();
-    // TODO: implement initState
-    super.initState();
-  }
-
-  void _startTimer(){
-    _start =  30;
-    _shorResendOtpButton = false;
-    setState(() {
-
-    });
-    _timer = Timer.periodic(Duration(seconds: 1), (timer){
-      if(_start == 0){
-        timer.cancel();
-        _shorResendOtpButton = true;
-      }
-      else{
-        _start--;
-
-      }
-      setState(() {
-
-      });
-    });
-  }
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        if(!_shorResendOtpButton)
-        RichText(
-          text: TextSpan(
-            style: TextStyle(color: Colors.black38),
-            children: [
-              TextSpan(text: 'You can sent OTP after '),
-              TextSpan(
-                text: '${_start}s',
-                style: TextStyle(
-                  color: AppColors.themeColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-        if(_shorResendOtpButton)  TextButton(onPressed: _resendOtpButton, child: Text('ReSend OTP')),
-      ],
-    );
-  }
-  void _resendOtpButton(){
-_startTimer();
-  }
-  @override
-  void dispose() {
-    _timer?.cancel();
-    // TODO: implement dispose
-    super.dispose();
-  }
-}
