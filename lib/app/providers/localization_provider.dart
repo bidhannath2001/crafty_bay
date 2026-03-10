@@ -1,5 +1,4 @@
 import 'package:crafty_bay/l10n/app_localizations.dart';
-import 'package:crafty_bay/l10n/app_localizations_bn.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
