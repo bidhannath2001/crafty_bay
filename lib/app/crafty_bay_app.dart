@@ -30,7 +30,7 @@ class CraftyBayApp extends StatelessWidget {
               return MaterialApp(
                 title: 'Crafty Bay',
                 initialRoute: SplashScreen.name,
-                onGenerateRoute: Routes.OngenerateRoute,
+                onGenerateRoute: Routes.onGenerateRoute,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: themeProvider.theme,

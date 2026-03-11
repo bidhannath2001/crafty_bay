@@ -75,7 +75,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   void _onTapSignInButton() {
     Navigator.pushNamed(context, SignUpScreen.name);
   }
-
+  @override
   void dispose() {
     _otpController.dispose();
     super.dispose();

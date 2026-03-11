@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class AppBarIconButton extends StatelessWidget {
-  AppBarIconButton({
+  const AppBarIconButton({
     super.key,
     required this.icon,
     required this.onTap

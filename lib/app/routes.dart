@@ -8,7 +8,7 @@ import '../features/product/presentation/screens/product_list_screen.dart';
 import '../features/shared/presentations/screens/main_nav_holder_screen.dart';
 
 class Routes {
-  static Route<dynamic>? OngenerateRoute(RouteSettings settings){
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings){
     Widget widget = SizedBox();
     switch(settings.name){
       case SplashScreen.name:

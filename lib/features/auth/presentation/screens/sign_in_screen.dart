@@ -93,7 +93,7 @@ class _SignInScreenState extends State<SignInScreen> {
     context.read<AuthProvider>()..resetFields();
     Navigator.pushNamed(context, SignUpScreen.name);
   }
-
+  @override
   void dispose(){
     _emailController.dispose();
     _passwordController.dispose();
