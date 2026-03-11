@@ -13,7 +13,7 @@ class HomeProductList extends StatelessWidget {
       height: 240,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => ProductCart(),
+        itemBuilder: (context, index) => ProductCard(),
         separatorBuilder: (context, index) =>
         const SizedBox(width: 4),
         itemCount: 10,

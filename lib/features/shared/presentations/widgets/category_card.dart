@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/app_colors.dart';
 import '../../../../app/extensions/utils_extension.dart';
+import '../../../product/presentation/screens/product_list_screen.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
@@ -10,17 +11,23 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Card(
-          elevation: 0,
-          child: Padding(
-            padding: const .all(16.0),
-            child: Icon(Icons.laptop,size: 50,color: AppColors.themeColor,),
+    return GestureDetector(
+      onTap: (){
+        Navigator.pushNamed(context, ProductListScreen.name,arguments: 'Electronic');
+      },
+      child: Column(
+        spacing: 4,
+        children: [
+          Card(
+            elevation: 0,
+            child: Padding(
+              padding: const .all(16.0),
+              child: Icon(Icons.laptop,size: 50,color: AppColors.themeColor,),
+            ),
           ),
-        ),
-        Text(getTitle('Electronic'),style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600,color: AppColors.themeColor),),
-      ],
+          Text(getTitle('Electronic'),style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600,color: AppColors.themeColor),),
+        ],
+      ),
     );
   }
   String getTitle(String title){

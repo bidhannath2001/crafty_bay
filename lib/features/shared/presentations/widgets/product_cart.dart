@@ -4,8 +4,8 @@ import '../../../../app/app_colors.dart';
 import '../../../../app/asset_paths.dart';
 import '../../../../app/constants.dart';
 
-class ProductCart extends StatelessWidget {
-  const ProductCart({
+class ProductCard extends StatelessWidget {
+  const ProductCard({
     super.key,
   });
 
