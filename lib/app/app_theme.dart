@@ -10,7 +10,8 @@ class AppTheme {
     progressIndicatorTheme: _progressIndicatorThemeData,
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
-    filledButtonTheme: _filledButtontheme
+    filledButtonTheme: _filledButtonTheme,
+    appBarTheme: _appBarTheme
   );
   static final ThemeData _darkThemeData =  ThemeData(
     colorSchemeSeed: AppColors.themeColor,
@@ -18,7 +19,8 @@ class AppTheme {
     progressIndicatorTheme: _progressIndicatorThemeData,
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
-      filledButtonTheme: _filledButtontheme
+      filledButtonTheme: _filledButtonTheme,
+    appBarTheme: _appBarTheme
   );
 
   static TextTheme get _textTheme=> TextTheme(
@@ -27,6 +29,13 @@ class AppTheme {
       fontWeight: FontWeight.bold
     )
   );
+ static AppBarTheme get _appBarTheme=> AppBarTheme(
+   titleTextStyle: TextStyle(
+     fontSize: 18,
+     fontWeight: FontWeight.bold,
+     color: AppColors.themeColor
+   ),
+ );
 
   static InputDecorationTheme get _inputDecorationTheme=>InputDecorationTheme(
     hintStyle: TextStyle(color: Colors.grey),
@@ -62,12 +71,14 @@ class AppTheme {
       borderRadius: BorderRadius.circular(8),
     ),
   );
+
   static ProgressIndicatorThemeData get _progressIndicatorThemeData{
     return ProgressIndicatorThemeData(
       color: AppColors.themeColor
     );
   }
-  static FilledButtonThemeData get _filledButtontheme=>FilledButtonThemeData(
+
+  static FilledButtonThemeData get _filledButtonTheme=>FilledButtonThemeData(
     style: FilledButton.styleFrom(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       fixedSize: Size.fromWidth(double.maxFinite),

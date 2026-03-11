@@ -19,8 +19,16 @@ class CategoryCard extends StatelessWidget {
             child: Icon(Icons.laptop,size: 50,color: AppColors.themeColor,),
           ),
         ),
-        Text('Electronics',style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600,color: AppColors.themeColor),),
+        Text(getTitle('Electronic'),style: context.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600,color: AppColors.themeColor),),
       ],
     );
+  }
+  String getTitle(String title){
+    if(title.length>10){
+      return '${title.substring(0,10)}...';
+    }
+    else{
+      return title;
+    }
   }
 }

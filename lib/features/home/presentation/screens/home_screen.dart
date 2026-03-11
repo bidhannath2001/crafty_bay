@@ -1,6 +1,7 @@
+import 'package:crafty_bay/features/shared/presentations/providers/main_nav_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../../shared/presentations/widgets/product_cart.dart';
 import '../widgets/home_app_bar.dart';
 import '../widgets/home_carousel_slider.dart';
 import '../widgets/home_category_list.dart';
@@ -30,7 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               HomeCarouselSlider(),
               const SizedBox(height: 16),
-              SectionHeader(title: 'Categories', onSeeAll: () {}),
+              SectionHeader(title: 'Categories', onSeeAll: () {
+                  context.read<MainNavProvider>().moveToCategory();
+              }),
               const SizedBox(height: 16),
               HomeCategoryList(),
               const SizedBox(height: 16),
