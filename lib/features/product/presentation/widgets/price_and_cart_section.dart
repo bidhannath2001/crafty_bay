@@ -4,10 +4,8 @@ import '../../../../app/app_colors.dart';
 import '../../../../app/constants.dart';
 import '../../../../app/extensions/utils_extension.dart';
 
-class BottomNavOfCart extends StatelessWidget {
-  const BottomNavOfCart({
-    super.key,
-  });
+class PriceAndCartSection extends StatelessWidget {
+  const PriceAndCartSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +42,13 @@ class BottomNavOfCart extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(width: 16,),
+            SizedBox(width: 16),
             SizedBox(
               width: 150,
               child: FilledButton(
-                  onPressed: () {}, child: Text('Checkout')),
+                onPressed: () {},
+                child: Text('Add to Cart'),
+              ),
             ),
           ],
         ),

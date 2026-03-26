@@ -1,23 +1,18 @@
+import 'package:crafty_bay/features/cart/presentation/widgets/total_price_and_checkout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../shared/presentations/providers/main_nav_provider.dart';
-import '../widgets/bottom_nav_of_cart.dart';
-import '../widgets/cart_tile.dart';
 
-class CartScreen extends StatefulWidget {
+import '../../../shared/presentations/providers/main_nav_provider.dart';
+import '../widgets/cart_tile.dart';
+class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
-  @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult: (_, _) {
+      onPopInvokedWithResult:(_,_){
         context.read<MainNavProvider>().backToHome();
       },
       child: Scaffold(
@@ -28,27 +23,22 @@ class _CartScreenState extends State<CartScreen> {
           ),
           title: Text('Cart'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                CartTile(),
-                CartTile(),
-                CartTile(),
-                CartTile(),
-                CartTile(),
-                CartTile(),
-                CartTile(),
-                CartTile(),
-                CartTile(),
-              ],
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView.separated(
+                itemBuilder: (context, index) => CartTile(),
+                separatorBuilder: (context, index) => SizedBox(height: 10),
+                itemCount: 10,
+              ),
             ),
-          ),
+            TotalPriceAndCheckout(),
+          ],
         ),
-        bottomNavigationBar: BottomNavOfCart(),
+        // bottomNavigationBar: BottomNavOfCart(),
       ),
     );
   }
 }
+
 
